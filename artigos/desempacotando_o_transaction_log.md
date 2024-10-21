@@ -8,7 +8,8 @@ O log de transações do Delta Lake (também conhecido como DeltaLog) é um regi
 
 ## Para que Serve o Log de Transações? 
 
-###Fonte Única de Verdade: O Delta Lake é construído sobre o Apache Spark para permitir que múltiplos leitores e gravadores de uma tabela trabalhem ao mesmo tempo. Para mostrar aos usuários visões corretas dos dados, o log de transações serve como uma *fonte única de verdade* - o repositório central que rastreia todas as mudanças feitas pelos usuários na tabela.
+### Fonte Única de Verdade: 
+O Delta Lake é construído sobre o Apache Spark para permitir que múltiplos leitores e gravadores de uma tabela trabalhem ao mesmo tempo. Para mostrar aos usuários visões corretas dos dados, o log de transações serve como uma *fonte única de verdade* - o repositório central que rastreia todas as mudanças feitas pelos usuários na tabela.
 
 Quando um usuário lê uma tabela Delta Lake pela primeira vez ou executa uma nova consulta em uma tabela aberta que foi modificada, o Spark verifica o log de transações para ver quais novas transações foram realizadas e, em seguida, atualiza a tabela do usuário com essas alterações. Isso garante que a versão da tabela esteja sempre sincronizada com o registro principal, e que os usuários não possam fazer mudanças conflitantes.
 
@@ -22,7 +23,7 @@ Se não está registrado no log de transações, nunca aconteceu. Apenas transa�
 
 ## Como Funciona o Log de Transações? 
 
-### Dividindo Transações em Commits Atômicos 
+### Dividindo Transações em Commits Atômicos:
 
 Sempre que um usuário modifica uma tabela (como um INSERT, UPDATE ou DELETE), o Delta Lake divide essa operação em uma série de etapas discretas compostas por uma ou mais das seguintes ações:
 
